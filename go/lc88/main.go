@@ -14,13 +14,11 @@ func main() {
 
 func merge(nums1 []int, m int, nums2 []int, n int)  {
 	i := 0
-	nums3 := nums1
 	for j, k := range nums2 {
-		for k > nums3[i] && i < m + j {
+		for k > nums1[i] && i < m + j {
 			i = i + 1
 		}
-		nums3 = slices.Insert(nums3, i, k)
+		nums1 = slices.Insert(nums1, i, k)
 	}
-	nums1 = nums3[0:m+n]
-	fmt.Println(nums1)
+	nums1 = nums1[0:m+n]
 }
