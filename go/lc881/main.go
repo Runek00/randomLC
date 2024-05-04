@@ -7,30 +7,15 @@ import (
 
 func numRescueBoats(people []int, limit int) int {
 	slices.Sort(people)
-	freq := make(map[int]int)
-	for _, v := range people {
-		freq[v]++
-	}
 	boats := 0
-	for i := len(people) - 1; i >= 0; i-- {
-		if freq[people[i]] == 0 {
-			continue
-		}
-		if people[i] == limit {
-			freq[people[i]]--
-			boats++
-			continue
-		}
-		j := limit - people[i]
-		freq[people[i]]--
-		for j >= 1 {
-			if freq[j] > 0 {
-				freq[j]--
-				break
-			}
-			j--
-		}
+	left := 0
+	right := len(people) - 1
+	for left <= right {
 		boats++
+		if people[right]+people[left] <= limit {
+			left++
+		}
+		right--
 	}
 	return boats
 }
