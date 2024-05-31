@@ -17,4 +17,9 @@ func preorderTraversal(root *TreeNode) []int {
     return out
 }
 
-func main(){}
+func main(){
+    r3 := TreeNode{3, nil, nil}
+    r2 := TreeNode{1, nil, &r3}
+    root := TreeNode{2, &r2, nil}
+    fmt.Println(preorderTraversal(root)
+}
